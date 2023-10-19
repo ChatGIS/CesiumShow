@@ -2,14 +2,15 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:35:00
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-10-19 09:23:41
+ * @LastEditTime: 2023-10-19 10:52:40
  * @FilePath: \CesiumShow\src\views\BaseCesium.vue
  * @Description: 
 -->
 <script setup>
-import { Viewer } from 'cesium'
+import { Viewer, Ion } from 'cesium'
 import { onMounted } from 'vue'
 
+Ion.defaultAccessToken=import.meta.env.VITE_CESIUM_TOKEN
 onMounted(() => {
     const viewer = new Viewer('cesiumContainer',{
         // scene3DOnly: true,
