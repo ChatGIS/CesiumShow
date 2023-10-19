@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:35:00
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-10-18 17:40:09
+ * @LastEditTime: 2023-10-19 09:23:41
  * @FilePath: \CesiumShow\src\views\BaseCesium.vue
  * @Description: 
 -->
@@ -25,5 +25,8 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
+#cesiumContainer {
+    width: 100%;
+    height: 100%;
+}
 </style>
