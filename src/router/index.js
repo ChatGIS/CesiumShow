@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-10-25 22:03:00
+ * @LastEditTime: 2023-11-27 01:03:44
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -19,6 +19,10 @@ const routes = [
         name: 'ImageryLayerOnline',
         path: '/online',
         component: () => import('@/views/ImageryLayerOnline.vue')
+    }, {
+        name: '2D3DLinkage',
+        path: '/2d3d-linkage',
+        component: () => import('@/views/2D3DLinkage.vue')
     }
 ]
 
