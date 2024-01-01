@@ -10,7 +10,7 @@
 import { Viewer, Ion } from 'cesium'
 import { onMounted } from 'vue'
 
-Ion.defaultAccessToken=import.meta.env.VITE_CESIUM_TOKEN
+Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
     const viewer = new Viewer('cesiumContainer',{
         // scene3DOnly: true,
