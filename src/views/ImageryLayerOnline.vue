@@ -2,8 +2,8 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:35:00
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-10-26 11:00:03
- * @FilePath: \CesiumShow\src\views\LoadImage.vue
+ * @LastEditTime: 2023-11-30 09:15:28
+ * @FilePath: \CesiumShow\src\views\ImageryLayerOnline.vue
  * @Description: 
 -->
 <script setup>
@@ -18,7 +18,7 @@ onMounted(() => {
     });
     // 高德影像图
     const imageryProviderGD = new UrlTemplateImageryProvider({
-        url: 'http://webst01.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
+        url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}',
         credit: '© Gaode Map'
     });
     viewer.imageryLayers.addImageryProvider(imageryProviderGD);

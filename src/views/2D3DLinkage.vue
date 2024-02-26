@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:35:00
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-11-27 02:25:14
+ * @LastEditTime: 2023-11-29 14:52:48
  * @FilePath: \CesiumShow\src\views\2D3Dlinkage.vue
  * @Description: 
 -->
@@ -20,9 +20,9 @@ import { onMounted } from 'vue'
 
 Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
-    const viewer3D = new Viewer('view3D', {
+    const view3D = new Viewer('view3D', {
     });
-    const viewer2D = new Viewer('view2D', {
+    const view2D = new Viewer('view2D', {
         sceneMode: SceneMode.SCENE2D,
     });
     /**
@@ -33,28 +33,28 @@ onMounted(() => {
     function sync2D() {
         // 三维地图中心点
         let center = new Cartesian2(
-            Math.floor(viewer3D.canvas.clientWidth / 2),
-            Math.floor(viewer3D.canvas.clientHeight / 2)
+            Math.floor(view3D.canvas.clientWidth / 2),
+            Math.floor(view3D.canvas.clientHeight / 2)
         );
         // 转为世界坐标系
-        let position = viewer3D.scene.camera.pickEllipsoid(center);
+        let position = view3D.scene.camera.pickEllipsoid(center);
         // 判断中心点是否在椭球体上
         if (defined(position)) {
             // 获取三维地图中心点与相机之间的距离
             let distance = Cartesian3.distance(
                 position,
-                viewer3D.scene.camera.positionWC
+                view3D.scene.camera.positionWC
             );
             // 更新二维地图
-            viewer2D.scene.camera.lookAt(
+            view2D.scene.camera.lookAt(
                 position,
                 new Cartesian3(0.0, 0.0, distance)
             )
         }
     }
-    viewer3D.camera.percentageChanged = 0.01;
+    view3D.camera.percentageChanged = 0.01;
     // 监听三维地图变化
-    viewer3D.camera.changed.addEventListener(sync2D);
+    view3D.camera.changed.addEventListener(sync2D);
 })
 </script>
 
