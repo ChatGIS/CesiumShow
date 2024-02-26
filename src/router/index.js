@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-11-27 01:03:44
+ * @LastEditTime: 2024-02-27 15:48:13
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -23,6 +23,10 @@ const routes = [
         name: '2D3DLinkage',
         path: '/2d3d-linkage',
         component: () => import('@/views/2D3DLinkage.vue')
+    }, {
+        name: 'EntityShow',
+        path: '/entity-show',
+        component: () => import('@/views/EntityShow.vue')
     }
 ]
 
