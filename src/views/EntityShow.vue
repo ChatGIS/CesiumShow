@@ -86,9 +86,94 @@ onMounted(() => {
         }
     })
     viewer.entities.add(entityCylinder);
-
-    const billboardEntity = new Entity({
-        position: Cartesian3.fromDegrees(117.023501,36.675143),
+    // 走廊实体
+    const entityCorridor = new Cesium.Entity({
+        id: 'corridor',
+        name: '走廊实体',
+        show: true,
+        corridor: {
+            positions: Cesium.Cartesian3.fromDegreesArray([
+                117.024,36.675143,
+                117.023502,36.672145,
+                117.021,36.676
+            ]),
+            width: 20,
+            material: Cesium.Color.YELLOW.withAlpha(0.5),
+        }
+    })
+    viewer.entities.add(entityCorridor);
+    // 墙实体
+    const entityWall = new Cesium.Entity({
+        id: 'wall',
+        name: '墙实体',
+        show: true,
+        wall: {
+            positions: Cesium.Cartesian3.fromDegreesArrayHeights([
+                117.01188,36.67698, 100,
+                117.00990,36.67432, 100,
+                117.01083,36.66381, 100,
+                117.01201,36.66148, 200,
+                117.02847,36.66223, 100,
+                117.02851,36.66579, 100,
+                117.03033,36.66761, 100,
+                117.03088,36.67366, 100,
+                117.02868,36.67787, 100,
+                117.01188,36.67698, 100
+            ]),
+            material: Cesium.Color.GREEN,
+        }
+    })
+    viewer.entities.add(entityWall);
+    // 方盒实体
+    const entityBox = new Cesium.Entity({
+        id: 'box',
+        name: '方盒实体',
+        show: true,
+        position: Cesium.Cartesian3.fromDegrees(117.028438, 36.671083, 500),
+        box: {
+            dimensions: new Cesium.Cartesian3(400, 300, 800),  // 长,宽,高
+            material: Cesium.Color.BLUE,
+        }
+    })
+    viewer.entities.add(entityBox);
+    // 椭球体实体
+    const entityEllipsoid = new Cesium.Entity({
+        id: 'ellipsoid',
+        name: '椭球体实体',
+        show: true,
+        position: Cesium.Cartesian3.fromDegrees(117.014318, 36.6731802, 500),
+        ellipsoid: {
+            radii: new Cesium.Cartesian3(200, 200, 700),  // X轴、Y轴、Z轴半径
+            material: Cesium.Color.BLUE.withAlpha(0.5),
+            outline: true,
+            outlineColor: Cesium.Color.WHITE,
+        }
+    })
+    viewer.entities.add(entityEllipsoid);
+    // 模型实体
+    const degree = 60;  // 度数
+    const heading = Cesium.Math.toRadians(degree);  // 模型航向（围绕负Z轴）
+    const pitch = 0;  // 俯仰角（围绕负Y轴）
+    const roll = 0;  // 翻滚角（围绕正X轴）
+    const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
+    const entityModel = new Cesium.Entity({
+        id: 'model',
+        name: '模型实体',
+        show: true,
+        position: Cesium.Cartesian3.fromDegrees(117.023501, 36.675143, 200),
+        orientation: Cesium.Transforms.headingPitchRollQuaternion(Cesium.
+            Cartesian3.fromDegrees(117.023501, 36.675143, 200), hpr),
+        model: {
+            uri: '/model/CesiumPlane.glb',  // 此处是uri，不是url
+            minimumPixelSize: 1,
+            maximumScale: 500,
+            scale: 5,
+        }
+    })
+    viewer.entities.add(entityModel);
+    // 广告牌实体
+    const entityBillboard = new Entity({
+        position: Cartesian3.fromDegrees(117.023501, 36.675143),
         billboard: {
           image: imageShop,
           scale: 3,
@@ -96,8 +181,9 @@ onMounted(() => {
           verticalOrigin: VerticalOrigin.BOTTOM,
         }
       })
-    viewer.entities.add(billboardEntity);
-    viewer.flyTo(billboardEntity);
+    viewer.entities.add(entityBillboard);
+    // 聚焦实体
+    viewer.flyTo(entityModel);
 })
 
 </script>
