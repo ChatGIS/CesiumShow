@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-02-27 15:48:13
+ * @LastEditTime: 2024-02-28 11:25:53
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -27,6 +27,10 @@ const routes = [
         name: 'EntityShow',
         path: '/entity-show',
         component: () => import('@/views/EntityShow.vue')
+    }, {
+        name: 'EntityShowTerrain',
+        path: '/entity-show-terrain',
+        component: () => import('@/views/EntityShowTerrain.vue')
     }
 ]
 
