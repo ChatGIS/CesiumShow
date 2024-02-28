@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-02-28 11:25:53
+ * @LastEditTime: 2024-02-29 08:56:21
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -31,6 +31,10 @@ const routes = [
         name: 'EntityShowTerrain',
         path: '/entity-show-terrain',
         component: () => import('@/views/EntityShowTerrain.vue')
+    }, {
+        name: 'GeomPrimitive',
+        path: '/geom-primitive',
+        component: () => import('@/views/GeomPrimitive.vue')
     }
 ]
 
