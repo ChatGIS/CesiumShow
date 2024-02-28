@@ -2,17 +2,17 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:35:00
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2023-10-19 10:52:40
+ * @LastEditTime: 2024-02-29 08:55:26
  * @FilePath: \CesiumShow\src\views\BaseCesium.vue
  * @Description: 
 -->
 <script setup>
-import { Viewer, Ion } from 'cesium'
+import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
 
-Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
+Cesium.Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
-    const viewer = new Viewer('cesiumContainer',{
+    const viewer = new Cesium.Viewer('cesiumContainer',{
         // scene3DOnly: true,
         // selectionIndicator: false
     })
