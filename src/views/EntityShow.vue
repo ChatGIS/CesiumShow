@@ -2,7 +2,7 @@
 import * as Cesium from 'cesium'
 import { Viewer, Ion, Entity, Cartesian3, HorizontalOrigin, VerticalOrigin } from 'cesium'
 import { onMounted } from 'vue'
-import imageShop from '../assets/image/shop.png'
+import imageShop from '@/assets/image/shop.png'
 
 Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
