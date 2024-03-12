@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-02 22:17:20
+ * @LastEditTime: 2024-03-13 16:06:40
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -35,6 +35,10 @@ const routes = [
     name: 'GeomPrimitive',
     path: '/geom-primitive',
     component: () => import('@/views/GeomPrimitive.vue')
+  }, {
+    name: '3dtiles',
+    path: '/3dtiles',
+    component: () => import('@/views/3DTileset.vue')
   }
 ]
 
