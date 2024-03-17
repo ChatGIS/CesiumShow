@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-13 22:58:51
+ * @LastEditTime: 2024-03-18 18:07:04
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -43,6 +43,10 @@ const routes = [
     name: 'DialogShow',
     path: '/dialog-show',
     component: () => import('@/views/DialogShow.vue')
+  }, {
+    name: 'MaterialVideo',
+    path: '/material-video',
+    component: () => import('@/views/MaterialVideo.vue')
   }
 ]
 
