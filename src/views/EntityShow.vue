@@ -6,12 +6,9 @@ import imageShop from '@/assets/image/shop.png'
 
 Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
-  const viewer = new Viewer('cesiumContainer',{
-    // scene3DOnly: true,
-    // selectionIndicator: false
-  })
+  const viewer = new Viewer('cesiumContainer')
   viewer.scene.debugShowFramesPerSecond = true
-  // 点实体
+  /* // 点实体
   const entityPoint = new Entity({
     id: 'point',
     name: '点实体',
@@ -23,8 +20,9 @@ onMounted(() => {
     }
   })
   viewer.entities.add(entityPoint)
+  viewer.zoomTo(entityPoint)
   // 线实体
-  const entityPolyline = new Entity({
+  const entityPolyline = viewer.entities.add({
     id: 'polyline',
     name: '线实体',
     show: true,
@@ -34,9 +32,9 @@ onMounted(() => {
       material: Cesium.Color.BLUE,
     }
   })
-  viewer.entities.add(entityPolyline)
+  viewer.zoomTo(entityPolyline)
   // 面实体
-  const entityPolygon = new Entity({
+  const entityPolygon = viewer.entities.add({
     id: 'polygon',
     name: '面实体',
     show: true,
@@ -45,9 +43,9 @@ onMounted(() => {
       material: Cesium.Color.RED.withAlpha(0.4),
     }
   })
-  viewer.entities.add(entityPolygon)
+  viewer.zoomTo(entityPolygon)  
   // 矩形实体
-  const entityRectangle = new Cesium.Entity({
+  const entityRectangle = viewer.entities.add({
     id: 'rectangle',
     name: '矩形',
     show: true,
@@ -56,22 +54,22 @@ onMounted(() => {
       material: Cesium.Color.GREEN.withAlpha(0.6),
     }
   })
-  viewer.entities.add(entityRectangle)
+  viewer.zoomTo(entityRectangle)*/
   // 椭圆实体
-  const entityEllipse = new Cesium.Entity({
+  const entityEllipse = viewer.entities.add({
     id: 'ellipse',
     name: '椭圆实体',
     show: true,
     position: Cesium.Cartesian3.fromDegrees(117.022, 36.6759),
     ellipse: {
-      semiMinorAxis: 25,
-      semiMajorAxis: 40,
+      semiMinorAxis: 25,  // 短半轴长度
+      semiMajorAxis: 40,  // 长半轴长度
       material: Cesium.Color.BLUEVIOLET.withAlpha(0.8),
     }
   })
-  viewer.entities.add(entityEllipse)
+  viewer.zoomTo(entityEllipse)
   // 圆柱体实体
-  const entityCylinder = new Cesium.Entity({
+  /* const entityCylinder = new Cesium.Entity({
     id: 'cylinder',
     name: '圆柱体实体',
     show: true,
@@ -183,7 +181,7 @@ onMounted(() => {
   })
   viewer.entities.add(entityBillboard)
   // 聚焦实体
-  viewer.flyTo(entityModel)
+  viewer.flyTo(entityModel) */
 })
 
 </script>
