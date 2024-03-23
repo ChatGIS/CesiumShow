@@ -4,16 +4,16 @@ import { Viewer, Ion, Entity, Cartesian3, HorizontalOrigin, VerticalOrigin } fro
 import { onMounted } from 'vue'
 import imageShop from '@/assets/image/shop.png'
 
-Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
+Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
   const viewer = new Viewer('cesiumContainer')
   viewer.scene.debugShowFramesPerSecond = true
-  /* // 点实体
+  // 点实体
   const entityPoint = new Entity({
     id: 'point',
     name: '点实体',
     show: true,
-    position: Cartesian3.fromDegrees(117.024,36.675143),
+    position: Cartesian3.fromDegrees(117.024, 36.675143),
     point: {
       color: Cesium.Color.RED,
       pixelSize: 50,
@@ -27,7 +27,7 @@ onMounted(() => {
     name: '线实体',
     show: true,
     polyline: {
-      positions: Cesium.Cartesian3.fromDegreesArray([117.0241,36.6751, 117.0242,36.6754, 117.0243,36.6752]),
+      positions: Cesium.Cartesian3.fromDegreesArray([117.0241, 36.6751, 117.0242, 36.6754, 117.0243, 36.6752]),
       width: 10,
       material: Cesium.Color.BLUE,
     }
@@ -39,11 +39,11 @@ onMounted(() => {
     name: '面实体',
     show: true,
     polygon: {
-      hierarchy: Cesium.Cartesian3.fromDegreesArray([117.0231, 36.6751, 117.0236, 36.6751, 117.0236, 36.6756, 117.0231, 36.6756 ]),
+      hierarchy: Cesium.Cartesian3.fromDegreesArray([117.0231, 36.6751, 117.0236, 36.6751, 117.0236, 36.6756, 117.0231, 36.6756]),
       material: Cesium.Color.RED.withAlpha(0.4),
     }
   })
-  viewer.zoomTo(entityPolygon)  
+  viewer.zoomTo(entityPolygon)
   // 矩形实体
   const entityRectangle = viewer.entities.add({
     id: 'rectangle',
@@ -54,7 +54,7 @@ onMounted(() => {
       material: Cesium.Color.GREEN.withAlpha(0.6),
     }
   })
-  viewer.zoomTo(entityRectangle)*/
+  viewer.zoomTo(entityRectangle)
   // 椭圆实体
   const entityEllipse = viewer.entities.add({
     id: 'ellipse',
@@ -69,11 +69,11 @@ onMounted(() => {
   })
   viewer.zoomTo(entityEllipse)
   // 圆柱体实体
-  /* const entityCylinder = new Cesium.Entity({
+  const entityCylinder = viewer.entities.add({
     id: 'cylinder',
     name: '圆柱体实体',
     show: true,
-    position: Cesium.Cartesian3.fromDegrees(117.023501,36.672143),
+    position: Cesium.Cartesian3.fromDegrees(117.023501, 36.672143),
     cylinder: {
       length: 400,
       topRadius: 100,
@@ -83,47 +83,47 @@ onMounted(() => {
       outlineColor: Cesium.Color.DARKGREEN,
     }
   })
-  viewer.entities.add(entityCylinder)
+  viewer.zoomTo(entityCylinder)
   // 走廊实体
-  const entityCorridor = new Cesium.Entity({
+  const entityCorridor = viewer.entities.add({
     id: 'corridor',
     name: '走廊实体',
     show: true,
     corridor: {
       positions: Cesium.Cartesian3.fromDegreesArray([
-        117.024,36.675143,
-        117.023502,36.672145,
-        117.021,36.676
+        117.024, 36.675143,
+        117.023502, 36.672145,
+        117.021, 36.676
       ]),
       width: 20,
       material: Cesium.Color.YELLOW.withAlpha(0.5),
     }
   })
-  viewer.entities.add(entityCorridor)
+  viewer.zoomTo(entityCorridor)
   // 墙实体
-  const entityWall = new Cesium.Entity({
+  const entityWall = viewer.entities.add({
     id: 'wall',
     name: '墙实体',
     show: true,
     wall: {
       positions: Cesium.Cartesian3.fromDegreesArrayHeights([
-        117.01188,36.67698, 100,
-        117.00990,36.67432, 100,
-        117.01083,36.66381, 100,
-        117.01201,36.66148, 200,
-        117.02847,36.66223, 100,
-        117.02851,36.66579, 100,
-        117.03033,36.66761, 100,
-        117.03088,36.67366, 100,
-        117.02868,36.67787, 100,
-        117.01188,36.67698, 100
+        117.01188, 36.67698, 100,
+        117.00990, 36.67432, 100,
+        117.01083, 36.66381, 100,
+        117.01201, 36.66148, 200,
+        117.02847, 36.66223, 100,
+        117.02851, 36.66579, 100,
+        117.03033, 36.66761, 100,
+        117.03088, 36.67366, 100,
+        117.02868, 36.67787, 100,
+        117.01188, 36.67698, 100
       ]),
       material: Cesium.Color.GREEN,
     }
   })
-  viewer.entities.add(entityWall)
+  viewer.zoomTo(entityWall)
   // 方盒实体
-  const entityBox = new Cesium.Entity({
+  const entityBox = viewer.entities.add({
     id: 'box',
     name: '方盒实体',
     show: true,
@@ -133,9 +133,9 @@ onMounted(() => {
       material: Cesium.Color.BLUE,
     }
   })
-  viewer.entities.add(entityBox)
+  viewer.zoomTo(entityBox)
   // 椭球体实体
-  const entityEllipsoid = new Cesium.Entity({
+  const entityEllipsoid = viewer.entities.add({
     id: 'ellipsoid',
     name: '椭球体实体',
     show: true,
@@ -147,14 +147,14 @@ onMounted(() => {
       outlineColor: Cesium.Color.WHITE,
     }
   })
-  viewer.entities.add(entityEllipsoid)
+  viewer.zoomTo(entityEllipsoid)
   // 模型实体
   const degree = 60  // 度数
   const heading = Cesium.Math.toRadians(degree)  // 模型航向（围绕负Z轴）
   const pitch = 0  // 俯仰角（围绕负Y轴）
   const roll = 0  // 翻滚角（围绕正X轴）
   const hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll)
-  const entityModel = new Cesium.Entity({
+  const entityModel = viewer.entities.add({
     id: 'model',
     name: '模型实体',
     show: true,
@@ -168,9 +168,9 @@ onMounted(() => {
       scale: 5,
     }
   })
-  viewer.entities.add(entityModel)
+  viewer.zoomTo(entityModel)
   // 广告牌实体
-  const entityBillboard = new Entity({
+  const entityBillboard = viewer.entities.add({
     position: Cartesian3.fromDegrees(117.023501, 36.675143),
     billboard: {
       image: imageShop,
@@ -179,20 +179,18 @@ onMounted(() => {
       verticalOrigin: VerticalOrigin.BOTTOM,
     }
   })
-  viewer.entities.add(entityBillboard)
-  // 聚焦实体
-  viewer.flyTo(entityModel) */
+  viewer.zoomTo(entityBillboard)
 })
 
 </script>
 
 <template>
-    <div id="cesiumContainer"></div>
+  <div id="cesiumContainer"></div>
 </template>
 
 <style scoped>
 #cesiumContainer {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>
