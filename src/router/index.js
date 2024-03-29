@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2023-10-18 17:34:01
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-18 18:07:04
+ * @LastEditTime: 2024-03-29 15:43:16
  * @FilePath: \CesiumShow\src\router\index.js
  * @Description: 
  */
@@ -47,6 +47,10 @@ const routes = [
     name: 'MaterialVideo',
     path: '/material-video',
     component: () => import('@/views/MaterialVideo.vue')
+  }, {
+    name: 'CloudShow',
+    path: '/cloud-show',
+    component: () => import('@/views/CloudShow.vue')
   }
 ]
 
