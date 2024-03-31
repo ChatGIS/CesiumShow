@@ -2,7 +2,7 @@
  * @Author: Dreamice dreamice13@foxmail.com
  * @Date: 2024-02-29 08:52:45
  * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-04 18:15:26
+ * @LastEditTime: 2024-05-10 14:01:55
  * @FilePath: \CesiumShow\src\views\GeomPrimitive.vue
  * @Description: Primitive相关功能
 -->
@@ -47,7 +47,8 @@ onMounted(() => {
           117.022346,36.630539,
           117.029848,36.631216
         ])
-      )
+      ),
+      extrudedHeight: 100
     })
   })
   const appePolygon = new Cesium.MaterialAppearance({

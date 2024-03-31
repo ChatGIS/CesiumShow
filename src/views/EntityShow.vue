@@ -41,6 +41,9 @@ onMounted(() => {
     polygon: {
       hierarchy: Cesium.Cartesian3.fromDegreesArray([117.0231, 36.6751, 117.0236, 36.6751, 117.0236, 36.6756, 117.0231, 36.6756]),
       material: Cesium.Color.RED.withAlpha(0.4),
+      // outline: true,
+      // outlineColor: Cesium.Color.BLACK,
+      extrudedHeight: 100,
     }
   })
   viewer.zoomTo(entityPolygon)
