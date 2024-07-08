@@ -1,11 +1,3 @@
-<!--
- * @Author: Dreamice dreamice13@foxmail.com
- * @Date: 2024-02-29 08:52:45
- * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-05-10 14:01:55
- * @FilePath: \CesiumShow\src\views\GeomPrimitive.vue
- * @Description: Primitive相关功能
--->
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'

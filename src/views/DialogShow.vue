@@ -1,11 +1,3 @@
-<!--
- * @Author: Dreamice dreamice13@foxmail.com
- * @Date: 2023-10-18 17:35:00
- * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-14 15:40:35
- * @FilePath: \CesiumShow\src\views\DialogShow.vue
- * @Description: 
--->
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'

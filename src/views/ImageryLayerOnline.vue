@@ -1,11 +1,3 @@
-<!--
- * @Author: Dreamice dreamice13@foxmail.com
- * @Date: 2023-10-18 17:35:00
- * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-05 19:13:00
- * @FilePath: \CesiumShow\src\views\ImageryLayerOnline.vue
- * @Description: 
--->
 <script setup>
 import { Viewer, Ion, UrlTemplateImageryProvider, Cartesian3 } from 'cesium'
 import { onMounted } from 'vue'

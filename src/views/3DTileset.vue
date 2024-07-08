@@ -1,11 +1,3 @@
-<!--
- * @Author: Dreamice dreamice13@foxmail.com
- * @Date: 2024-03-13 15:47:23
- * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-13 17:38:35
- * @FilePath: \CesiumShow\src\views\3DTileset.vue
- * @Description: 
--->
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'

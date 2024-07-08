@@ -1,11 +1,3 @@
-<!--
- * @Author: Dreamice dreamice13@foxmail.com
- * @Date: 2023-10-18 17:35:00
- * @LastEditors: Dreamice dreamice13@foxmail.com
- * @LastEditTime: 2024-03-28 23:15:08
- * @FilePath: \CesiumShow\src\views\CloudShow.vue
- * @Description: 
--->
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
