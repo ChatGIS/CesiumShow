@@ -43,6 +43,10 @@ const routes = [
     name: 'CloudShow',
     path: '/cloud-show',
     component: () => import('@/views/CloudShow.vue')
+  }, {
+    name: 'TerrainShow',
+    path: '/terrain-show',
+    component: () => import('@/views/TerrainShow.vue')
   }
 ]
 

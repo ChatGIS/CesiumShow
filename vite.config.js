@@ -11,4 +11,13 @@ export default defineConfig({
       '@': path.resolve('./src'),  // 路径别名
     }
   },
+  server: {
+    proxy: {
+      '/terrain': {
+        target: 'http://localhost:1301',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/pjone-server/, '')
+      },
+    }
+  }
 })
