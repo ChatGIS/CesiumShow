@@ -47,6 +47,10 @@ const routes = [
     name: 'TerrainShow',
     path: '/terrain-show',
     component: () => import('@/views/TerrainShow.vue')
+  }, {
+    name: 'CameraParam',
+    path: '/camera-param',
+    component: () => import('@/views/CameraParam.vue')
   }
 ]
 
