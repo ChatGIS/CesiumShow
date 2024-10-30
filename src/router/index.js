@@ -51,6 +51,18 @@ const routes = [
     name: 'CameraParam',
     path: '/camera-param',
     component: () => import('@/views/CameraParam.vue')
+  }, {
+    name: 'ElectricFence',
+    path: '/electric-fence',
+    component: () => import('@/views/ElectricFence.vue')
+  }, {
+    name: 'DoubleArrow',
+    path: '/double-arrow',
+    component: () => import('@/views/DoubleArrow.vue')
+  }, {
+    name: 'ZIndexTest',
+    path: '/zindex-test',
+    component: () => import('@/views/ZIndexTest.vue')
   }
 ]
 
