@@ -63,6 +63,10 @@ const routes = [
     name: 'ZIndexTest',
     path: '/zindex-test',
     component: () => import('@/views/ZIndexTest.vue')
+  }, {
+    name: 'BaiMo',
+    path: '/baimo',
+    component: () => import('@/views/BaiMo.vue')
   }
 ]
 
