@@ -67,6 +67,10 @@ const routes = [
     name: 'BaiMo',
     path: '/baimo',
     component: () => import('@/views/BaiMo.vue')
+  }, {
+    name: 'RaderScan',
+    path: '/rader-scan',
+    component: () => import('@/views/RaderScan.vue')
   }
 ]
 
