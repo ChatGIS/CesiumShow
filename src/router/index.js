@@ -6,6 +6,14 @@ const routes = [
   {
     name: 'BaseMenu',
     path: '/',
+    component: () => import('@/views/system/BaseMenu.vue'),
+    meta: {
+      keepAlive: true
+    }
+  },
+  {
+    name: 'BaseCesium',
+    path: '/base-cesium',
     component: () => import('@/views/BaseCesium.vue')
   }, {
     name: 'ImageryLayerOnline',
