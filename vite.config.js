@@ -12,7 +12,7 @@ export default defineConfig({
     }
   },
   server: {
-    port: 13012,
+    port: 8081,
     proxy: {
       '/terrain': {
         target: 'http://localhost:1301',

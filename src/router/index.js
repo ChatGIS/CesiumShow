@@ -79,6 +79,10 @@ const routes = [
     name: 'RaderScan',
     path: '/rader-scan',
     component: () => import('@/views/RaderScan.vue')
+  }, {
+    name: 'EllipsoidFade',
+    path: '/ellipsoid-fade',
+    component: () => import('@/views/EllipsoidFade.vue')
   }
 ]
 

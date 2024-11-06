@@ -11,7 +11,13 @@ const allMenu = [{
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/rader-scan',
   desc: '雷达扫描效果',
-  tags: ['特效', '雷达']
+  tags: ['动态特效', '雷达']
+}, {
+  title: '圆扩散',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/ellipsoid-fade',
+  desc: '圆扩散动态效果',
+  tags: ['动态特效', '圆', '扩散']
 }]
 
 // 计算属性，拆为二维数组
