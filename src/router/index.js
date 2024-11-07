@@ -83,6 +83,10 @@ const routes = [
     name: 'EllipsoidFade',
     path: '/ellipsoid-fade',
     component: () => import('@/views/EllipsoidFade.vue')
+  }, {
+    name: 'Scanline',
+    path: '/scanline',
+    component: () => import('@/views/Scanline.vue')
   }
 ]
 

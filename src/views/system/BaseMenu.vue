@@ -18,6 +18,12 @@ const allMenu = [{
   showRoute: '/ellipsoid-fade',
   desc: '圆扩散动态效果',
   tags: ['动态特效', '圆', '扩散']
+}, {
+  title: '线圈扩散',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/scanline',
+  desc: '线圈扩散动态效果',
+  tags: ['动态特效', '圆', '扩散']
 }]
 
 // 计算属性，拆为二维数组
