@@ -21,8 +21,14 @@ const allMenu = [{
 }, {
   title: '线圈扩散',
   imgSrc: getAssetsFile('rader-scan.png'),
-  showRoute: '/scanline',
+  showRoute: '/scan-line',
   desc: '线圈扩散动态效果',
+  tags: ['动态特效', '圆', '扩散']
+}, {
+  title: '水波纹扩散',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/circle-wave',
+  desc: '水波纹扩散动态效果',
   tags: ['动态特效', '圆', '扩散']
 }]
 

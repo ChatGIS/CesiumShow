@@ -84,9 +84,13 @@ const routes = [
     path: '/ellipsoid-fade',
     component: () => import('@/views/EllipsoidFade.vue')
   }, {
-    name: 'Scanline',
-    path: '/scanline',
-    component: () => import('@/views/Scanline.vue')
+    name: 'ScanLine',
+    path: '/scan-line',
+    component: () => import('@/views/ScanLine.vue')
+  }, {
+    name: 'CircleWave',
+    path: '/circle-wave',
+    component: () => import('@/views/CircleWave.vue')
   }
 ]
 

@@ -4,9 +4,6 @@
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
-// import EllipsoidFadeMaterialProperty from '/Material/EllipsoidFadeMaterialProperty.js' // 引入这个材质类
-// import EllipsoidFadeMaterialProperty  from './MaterialDefine/EllipsoidFadeMaterialProperty.js' // 引入这个材质类
-import {EllipsoidFadeMaterialProperty}  from './MaterialDefine/EllipsoidFadeMaterialProperty2.js' // 引入这个材质类
 import {ScanlineMaterialProperty}  from './MaterialDefine/ScanlineMaterialProperty.js' // 引入这个材质类
 
 
@@ -27,7 +24,7 @@ onMounted(async () => {
 const addScanline = () => {
   const duration = 6500
   const maxRadius = 1200
-  const entityEllipsoidFade = viewer.entities.add({
+  const entityScanline = viewer.entities.add({
     id: '00001',
     position: Cesium.Cartesian3.fromDegrees(113.922744751, 22.536218643, 0),
     ellipse: {
@@ -43,7 +40,7 @@ const addScanline = () => {
       ),
     },
   })
-  viewer.zoomTo(entityEllipsoidFade)
+  viewer.zoomTo(entityScanline)
 }
 </script>
 <style scoped>
