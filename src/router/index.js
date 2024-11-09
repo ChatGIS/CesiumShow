@@ -91,6 +91,10 @@ const routes = [
     name: 'CircleWave',
     path: '/circle-wave',
     component: () => import('@/views/CircleWave.vue')
+  }, {
+    name: 'HexagonSpread',
+    path: '/hexagon-spread',
+    component: () => import('@/views/HexagonSpread.vue')
   }
 ]
 

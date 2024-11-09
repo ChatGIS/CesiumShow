@@ -30,6 +30,12 @@ const allMenu = [{
   showRoute: '/circle-wave',
   desc: '水波纹扩散动态效果',
   tags: ['动态特效', '圆', '扩散']
+}, {
+  title: '六边形扩散',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/hexagon-spread',
+  desc: '水波纹扩散动态效果',
+  tags: ['动态特效', '六边形', '扩散']
 }]
 
 // 计算属性，拆为二维数组
