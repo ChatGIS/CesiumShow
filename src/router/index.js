@@ -95,6 +95,10 @@ const routes = [
     name: 'HexagonSpread',
     path: '/hexagon-spread',
     component: () => import('@/views/HexagonSpread.vue')
+  }, {
+    name: 'FlyLine',
+    path: '/fly-line',
+    component: () => import('@/views/FlyLine.vue')
   }
 ]
 

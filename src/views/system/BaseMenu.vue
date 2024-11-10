@@ -11,31 +11,37 @@ const allMenu = [{
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/rader-scan',
   desc: '雷达扫描效果',
-  tags: ['动态特效', '雷达']
+  tags: ['动态特效', '点', '雷达']
 }, {
   title: '圆扩散',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/ellipsoid-fade',
   desc: '圆扩散动态效果',
-  tags: ['动态特效', '圆', '扩散']
+  tags: ['动态特效', '点', '圆', '扩散']
 }, {
   title: '线圈扩散',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/scan-line',
   desc: '线圈扩散动态效果',
-  tags: ['动态特效', '圆', '扩散']
+  tags: ['动态特效', '点', '圆', '扩散']
 }, {
   title: '水波纹扩散',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/circle-wave',
   desc: '水波纹扩散动态效果',
-  tags: ['动态特效', '圆', '扩散']
+  tags: ['动态特效', '点', '圆', '扩散']
 }, {
   title: '六边形扩散',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/hexagon-spread',
   desc: '水波纹扩散动态效果',
-  tags: ['动态特效', '六边形', '扩散']
+  tags: ['动态特效', '点', '六边形', '扩散']
+}, {
+  title: '飞线',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/fly-line',
+  desc: '飞线效果',
+  tags: ['动态特效', '线', '飞线']
 }]
 
 // 计算属性，拆为二维数组

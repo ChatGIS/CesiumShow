@@ -8,6 +8,8 @@ import { onMounted } from 'vue'
 import {EllipsoidFadeMaterialProperty}  from './MaterialDefine/EllipsoidFadeMaterialProperty2.js'
 import {ScanlineMaterialProperty}  from './MaterialDefine/ScanlineMaterialProperty.js'
 import {CircleWaveMaterialProperty}  from './MaterialDefine/CircleWaveMaterialProperty.js'
+import { HexagonSpreadMaterialProperty }  from './MaterialDefine/HexagonSpreadMaterialProperty.js'
+import { PolylineTrailMaterialProperty }  from './MaterialDefine/PolylineTrailMaterialProperty.js'
 
 Cesium.Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 let viewer
@@ -15,6 +17,7 @@ let linkA
 let linkB
 let canvasCollection
 let rotation = 0
+let flyLinesEntities = []
 onMounted(async () => {
   viewer = new Cesium.Viewer('cesiumContainer', {
     // terrainProvider: await Cesium.createWorldTerrainAsync()
@@ -43,7 +46,66 @@ onMounted(async () => {
   addEllipsoidFade()
   addScanline()
   addCircleWave()
+  addHexagonSpread()
+  addFlyLines()
 })
+const addFlyLines = () => {
+  let points = turf.randomPoint(300, {
+    bbox: [113.8918, 22.4818, 113.96858, 22.5692],
+  })
+  let features = points.features
+  let point
+  let startPosition
+  let endPosition
+  features.forEach((item) => {
+    point = item.geometry.coordinates
+    startPosition = Cesium.Cartesian3.fromDegrees(point[0], point[1], 0)
+    endPosition = Cesium.Cartesian3.fromDegrees(
+      point[0],
+      point[1],
+      3000 * Math.random()
+    )
+    flyLinesEntities.push(viewer.entities.add({
+      polyline: {
+        positions: [startPosition, endPosition],
+        width: 2,
+        material: new PolylineTrailMaterialProperty({
+          speed: 6 * Math.random(),
+          color: new Cesium.Color.fromCssColorString('#A932B4'),
+          percent: 0.1, // 尾巴拖多少长
+          gradient: 0.1, // 变化率
+        }),
+      },
+    })
+    )
+  })
+  viewer.zoomTo(flyLinesEntities[1])
+}
+const addHexagonSpread = () => {
+  const duration = 7500
+  const maxRadius = 800
+  let currentRadius = 1
+  const entityHexagonSpread = viewer.entities.add({
+    id: '00004',
+    position: Cesium.Cartesian3.fromDegrees(113.91519165, 22.513103485, 0),
+    ellipse: {
+      semiMajorAxis: new Cesium.CallbackProperty(function() {
+        currentRadius += (1000 / duration) * 50
+        if (currentRadius > maxRadius) {
+          currentRadius = 1
+        }
+        return currentRadius
+      }, false),
+      semiMinorAxis: new Cesium.CallbackProperty(function() {
+        return currentRadius
+      }, false),
+      material: new HexagonSpreadMaterialProperty(
+        new Cesium.Color.fromCssColorString('rgba(0, 153, 191, 1)')
+      ),
+    },
+  })
+  viewer.zoomTo(entityHexagonSpread)
+}
 const addCircleWave = () => {
   const duration = 4500
   const maxRadius = 400
