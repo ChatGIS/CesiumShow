@@ -10,6 +10,7 @@ import {ScanlineMaterialProperty}  from './MaterialDefine/ScanlineMaterialProper
 import {CircleWaveMaterialProperty}  from './MaterialDefine/CircleWaveMaterialProperty.js'
 import { HexagonSpreadMaterialProperty }  from './MaterialDefine/HexagonSpreadMaterialProperty.js'
 import { PolylineTrailMaterialProperty }  from './MaterialDefine/PolylineTrailMaterialProperty.js'
+import { Spriteline1MaterialProperty }  from './MaterialDefine/Spriteline1MaterialProperty.js'
 
 Cesium.Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 let viewer
@@ -48,7 +49,46 @@ onMounted(async () => {
   addCircleWave()
   addHexagonSpread()
   addFlyLines()
+  addSpriteLine1()
+  addSpriteLine2()
+  addSpriteLine3()
 })
+const addSpriteLine1 = () => {
+  let promise = Cesium.GeoJsonDataSource.load('https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/geojson/nanshan-road1.geojson')
+  promise.then((data) => {
+    viewer.dataSources.add(data)
+    let roadData = data.entities.values
+    roadData.forEach((item) => {
+      item.polyline.width = 1.6
+      item.polyline.material = new Spriteline1MaterialProperty(3600, 'https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/pic/spriteline1.png')
+    })
+    // viewer.zoomTo(data.entities.values[0])
+  })
+}
+const addSpriteLine2 = () => {
+  let promise = Cesium.GeoJsonDataSource.load('https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/geojson/nanshan-road2.geojson')
+  promise.then((data) => {
+    viewer.dataSources.add(data)
+    let roadData = data.entities.values
+    roadData.forEach((item) => {
+      item.polyline.width = 1.5
+      item.polyline.material = new Spriteline1MaterialProperty(600, 'https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/pic/spriteline2.png')
+    })
+    // viewer.zoomTo(data.entities.values[0])
+  })
+}
+const addSpriteLine3 = () => {
+  let promise = Cesium.GeoJsonDataSource.load('https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/geojson/nanshan-road3.geojson')
+  promise.then((data) => {
+    viewer.dataSources.add(data)
+    let roadData = data.entities.values
+    roadData.forEach((item) => {
+      item.polyline.width = 1.2
+      item.polyline.material = new Spriteline1MaterialProperty(2000, 'https://jdvop.oss-cn-qingdao.aliyuncs.com/mapv-data/pic/spriteline3.png')
+    })
+    // viewer.zoomTo(data.entities.values[0])
+  })
+}
 const addFlyLines = () => {
   let points = turf.randomPoint(300, {
     bbox: [113.8918, 22.4818, 113.96858, 22.5692],
@@ -79,7 +119,7 @@ const addFlyLines = () => {
     })
     )
   })
-  viewer.zoomTo(flyLinesEntities[1])
+  // viewer.zoomTo(flyLinesEntities[1])
 }
 const addHexagonSpread = () => {
   const duration = 7500
@@ -104,7 +144,7 @@ const addHexagonSpread = () => {
       ),
     },
   })
-  viewer.zoomTo(entityHexagonSpread)
+  // viewer.zoomTo(entityHexagonSpread)
 }
 const addCircleWave = () => {
   const duration = 4500
@@ -132,7 +172,7 @@ const addCircleWave = () => {
       }),
     },
   })
-  viewer.zoomTo(entityCircleWave)
+  // viewer.zoomTo(entityCircleWave)
 }
 const addScanline = () => {
   const duration = 6500
@@ -153,7 +193,7 @@ const addScanline = () => {
       ),
     },
   })
-  viewer.zoomTo(entityScanline)
+  // viewer.zoomTo(entityScanline)
 }
 const addEllipsoidFade = () => {
   const duration = 9500
@@ -183,7 +223,7 @@ const addEllipsoidFade = () => {
       ),
     },
   })
-  viewer.zoomTo(entityEllipsoidFade)
+  // viewer.zoomTo(entityEllipsoidFade)
 }
 const addRaderScan = () => {
   viewer.entities.add({

@@ -99,6 +99,10 @@ const routes = [
     name: 'FlyLine',
     path: '/fly-line',
     component: () => import('@/views/FlyLine.vue')
+  }, {
+    name: 'SpriteLine',
+    path: '/sprite-line',
+    component: () => import('@/views/SpriteLine.vue')
   }
 ]
 

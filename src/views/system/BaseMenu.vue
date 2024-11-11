@@ -42,6 +42,12 @@ const allMenu = [{
   showRoute: '/fly-line',
   desc: '飞线效果',
   tags: ['动态特效', '线', '飞线']
+}, {
+  title: '道路穿梭',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/sprite-line',
+  desc: '道路穿梭',
+  tags: ['动态特效', '线', '道路穿梭']
 }]
 
 // 计算属性，拆为二维数组
