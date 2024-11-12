@@ -103,6 +103,10 @@ const routes = [
     name: 'SpriteLine',
     path: '/sprite-line',
     component: () => import('@/views/SpriteLine.vue')
+  }, {
+    name: 'ModelShow',
+    path: '/model-show',
+    component: () => import('@/views/ModelShow.vue')
   }
 ]
 

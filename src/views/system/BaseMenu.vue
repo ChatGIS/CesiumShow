@@ -48,6 +48,12 @@ const allMenu = [{
   showRoute: '/sprite-line',
   desc: '道路穿梭',
   tags: ['动态特效', '线', '道路穿梭']
+}, {
+  title: '模型展示',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/model-show',
+  desc: '模型展示',
+  tags: ['模型']
 }]
 
 // 计算属性，拆为二维数组
