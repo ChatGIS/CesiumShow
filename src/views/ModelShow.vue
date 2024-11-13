@@ -8,6 +8,11 @@ Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 onMounted(() => {
   viewer = new Viewer('cesiumContainer')
   viewer.scene.debugShowFramesPerSecond = true
+  const imageryProviderGD = new Cesium.UrlTemplateImageryProvider({
+    url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}',
+    credit: '© Gaode Map'
+  })
+  viewer.imageryLayers.addImageryProvider(imageryProviderGD)
   showModel1()
   showModel2()
   showModel3()

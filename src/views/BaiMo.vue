@@ -22,6 +22,18 @@ let flyLinesEntities = []
 onMounted(async () => {
   viewer = new Cesium.Viewer('cesiumContainer', {
     // terrainProvider: await Cesium.createWorldTerrainAsync()
+    baseLayer: new Cesium.ImageryLayer(
+      new Cesium.UrlTemplateImageryProvider({
+        url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}'
+      }),
+      {
+        brightness: 0.6, // 亮度
+        contrast: 1.8, // 对比度
+        hue: 1, // 色相
+        saturation: 0.0, // 饱和度
+        gamma: 0.3 // 伽马值
+      }
+    )
   })
   viewer.scene.debugShowFramesPerSecond = true
   viewer.camera.setView({
@@ -32,6 +44,30 @@ onMounted(async () => {
       roll: Cesium.Math.toRadians(0)
     } */
   })
+  /* const aMapImagery = new Cesium.UrlTemplateImageryProvider({
+    url: 'http://webst03.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}',
+    credit: '© Gaode Map'
+  }) */
+  // viewer.imageryLayers.addImageryProvider(aMapImagery)
+  // 设置 滤镜效果
+  const aMapImagery = viewer.imageryLayers.get(0)
+  aMapImagery.invertColor = 1.0
+  // aMapImagery.filterRGB = [255.0, 255.0, 255.0]
+  aMapImagery.filterRGB = colorRgb('#4e70a6')
+  // aMapImagery.filterRGB = colorRgb('#ffff00')
+  // aMapImagery.filterRGB = colorRgb('#4e70cc')
+
+  // 更改cesium的着色器代码 关于滤镜和反色的 [在不更改cesium源文件的情况下]
+  changeImageryProviderColors(viewer, aMapImagery)
+
+  // aMapImagery.alpha = 0.5; // 透明度
+  // aMapImagery.dayAlpha = 0.5; // 日间透明度
+  // aMapImagery.nightAlpha = 0.5; // 夜间透明度
+  // aMapImagery.brightness = 0.6 // 亮度
+  // aMapImagery.contrast = 1.8 // 对比度
+  // aMapImagery.hue = 1 // 色相
+  // aMapImagery.saturation = 0.0 // 饱和度
+  // aMapImagery.gamma = 0.3 // 伽马值
   // 因为画布内变化CallbackProperty监控不到，所以用两个画布切换的方式达成效果
   linkA = document.createElement('canvas')
   linkA.setAttribute('width', '800px')
@@ -55,6 +91,61 @@ onMounted(async () => {
   showModel2()
   showModel3()
 })
+function colorRgb(inColor) {
+  // 16进制颜色值的正则
+  const reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/
+  // 把颜色值变成小写
+  let color = inColor.toLowerCase()
+  if (reg.test(color)) {
+    // 如果只有三位的值，需变成六位，如：#fff => #ffffff
+    if (color.length === 4) {
+      let colorNew = '#'
+      for (let i = 1; i < 4; i += 1) {
+        colorNew += color.slice(i, i + 1).concat(color.slice(i, i + 1))
+      }
+      color = colorNew
+    }
+    // 处理六位的颜色值，转为RGB
+    const colorChange = []
+    for (let i = 1; i < 7; i += 2) {
+      colorChange.push(parseInt('0x' + color.slice(i, i + 2)))
+    }
+    return colorChange
+  }
+  return []
+}
+
+const changeImageryProviderColors = (viewer, baseLayer) => {
+  // 更改底图的着色器 代码
+  const baseFragmentShaderSource =
+    viewer.scene.globe._surfaceShaderSet.baseFragmentShaderSource.sources
+  for (let i = 0; i < baseFragmentShaderSource.length; i++) {
+    const oneSource = baseFragmentShaderSource[i]
+    // 格式必须一致 不能多有空格 且保持版本一致性
+    const strS = 'color = czm_saturation(color, textureSaturation);\n#endif\n'
+    let strT = 'color = czm_saturation(color, textureSaturation);\n#endif\n'
+    if (baseLayer.invertColor) {
+      strT += `
+        color.r = 1.0 - color.r;
+        color.g = 1.0 - color.g;
+        color.b = 1.0 - color.b;
+      `
+      strT += `
+      color.r = color.r * ${baseLayer.filterRGB[0]}.0/255.0;
+      color.g = color.g * ${baseLayer.filterRGB[1]}.0/255.0;
+      color.b = color.b * ${baseLayer.filterRGB[2]}.0/255.0;
+      `
+    }
+
+    if (oneSource.indexOf(strS) !== -1) {
+      baseFragmentShaderSource[i] = baseFragmentShaderSource[i].replace(
+        strS,
+        strT
+      )
+    }
+  }
+}
+
 const showModel2 = async () => {
   let position = Cesium.Cartesian3.fromDegrees(113.93321990966797, 22.517576217651367, 5)
   let hpr = new Cesium.HeadingPitchRoll(
