@@ -17,7 +17,7 @@ const routes = [
     component: () => import('@/views/BaseCesium.vue')
   }, {
     name: 'ImageryLayerOnline',
-    path: '/online',
+    path: '/imagery-layer-online',
     component: () => import('@/views/ImageryLayerOnline.vue')
   }, {
     name: '2D3DLinkage',

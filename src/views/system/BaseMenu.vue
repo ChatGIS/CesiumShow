@@ -7,6 +7,12 @@ import ImageProjectIcon from '@/assets/image/project_icon_transparent.png'
 
 // 所有菜单项
 const allMenu = [{
+  title: '在线瓦片图',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/imagery-layer-online',
+  desc: '在线瓦片图',
+  tags: ['在线', '瓦片']
+}, {
   title: '雷达圆扫',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/rader-scan',

@@ -1,28 +1,24 @@
 <script setup>
-import { Viewer, Ion, UrlTemplateImageryProvider, Cartesian3 } from 'cesium'
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
 
 let viewer
-Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
+Cesium.Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
 onMounted(async () => {
-  viewer = new Viewer('cesiumContainer', {
+  viewer = new Cesium.Viewer('cesiumContainer', {
     baseLayerPicker: false,
-    /* imageryProvider: new UrlTemplateImageryProvider({
-      url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}',
-      credit: '© Gaode Map'
-    }), */
+    // baseLayer: Cesium.ImageryLayer.fromWorldImagery()
     baseLayer: new Cesium.ImageryLayer(
       new Cesium.UrlTemplateImageryProvider({
         url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}'
-      }),
+      })/* ,
       {
         brightness: 0.6, // 亮度
         contrast: 1.8, // 对比度
         hue: 1, // 色相
         saturation: 0.0, // 饱和度
         gamma: 0.3 // 伽马值
-      }
+      } */
     )
   })
   // 高德影像图
@@ -30,7 +26,7 @@ onMounted(async () => {
     url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}',
     credit: '© Gaode Map'
   }) */
-  const baseLayer = viewer.imageryLayers.get(0)
+  // const baseLayer = viewer.imageryLayers.get(0)
   // console.log(viewer.imageryLayers.length, baseLayer, 'CesiumShow-11-21 11:09:24测试打印内容m')
   
   // baseLayer.brightness = 0.6 // 亮度
@@ -59,14 +55,14 @@ onMounted(async () => {
   }) */
   // viewer.imageryLayers.addImageryProvider(imageryProviderUrlOSM);
 
-  viewer.camera.setView({
-    destination: Cartesian3.fromDegrees(120, 37, 1000000)
-  })
-  viewer.scene.debugShowFramesPerSecond = true
+  // viewer.camera.setView({
+  //   destination: Cesium.Cartesian3.fromDegrees(120, 37, 1000000)
+  // })
+  // viewer.scene.debugShowFramesPerSecond = true
 
-  baseLayer.invertColor = 1
-  baseLayer.filterRGB = colorRgb('#4e70a6')
-  changeImageryProviderColors(baseLayer)
+  // baseLayer.invertColor = 1
+  // baseLayer.filterRGB = colorRgb('#4e70a6')
+  // changeImageryProviderColors(baseLayer)
 })
 function changeImageryProviderColors(baseLayer){
   // 更改底图的着色器 代码
