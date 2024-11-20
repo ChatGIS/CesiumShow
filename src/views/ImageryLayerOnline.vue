@@ -1,6 +1,7 @@
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
+import worldImage from '@/assets/image/world-blue.png'
 
 let viewer
 Cesium.Ion.defaultAccessToken = import.meta.env.VITE_TOKEN_CESIUM
@@ -8,17 +9,35 @@ onMounted(async () => {
   viewer = new Cesium.Viewer('cesiumContainer', {
     baseLayerPicker: false,
     // baseLayer: Cesium.ImageryLayer.fromWorldImagery()
+    // baseLayer: new Cesium.ImageryLayer(
+    //   new Cesium.UrlTemplateImageryProvider({
+    //     url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}'
+    //   })/* ,
+    //   {
+    //     brightness: 0.6, // 亮度
+    //     contrast: 1.8, // 对比度
+    //     hue: 1, // 色相
+    //     saturation: 0.0, // 饱和度
+    //     gamma: 0.3 // 伽马值
+    //   } */
+    // ),
+    // baseLayer: new Cesium.ImageryLayer(
+    //   new Cesium.WebMapTileServiceImageryProvider({
+    //     url: 'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=' + import.meta.env.VITE_TOKEN_TDT,
+    //     layer:'tiandituImg',
+    //     style:'default',
+    //     // format:'image/jpeg',
+    //     tileMatrixSetID:'tiandituImg',
+    //     // show:true,
+    //     // maximumLevel:18
+    //   })
+    // ),
     baseLayer: new Cesium.ImageryLayer(
-      new Cesium.UrlTemplateImageryProvider({
-        url: 'http://webst01.is.autonavi.com/appmaptile?style=7&x={x}&y={y}&z={z}'
-      })/* ,
-      {
-        brightness: 0.6, // 亮度
-        contrast: 1.8, // 对比度
-        hue: 1, // 色相
-        saturation: 0.0, // 饱和度
-        gamma: 0.3 // 伽马值
-      } */
+      new Cesium.SingleTileImageryProvider({
+        url: worldImage,
+        tileWidth: 8176,
+        tileHeight: 4032
+      })
     )
   })
   // 高德影像图
