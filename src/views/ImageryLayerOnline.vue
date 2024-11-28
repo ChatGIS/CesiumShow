@@ -21,24 +21,25 @@ onMounted(async () => {
     //     gamma: 0.3 // 伽马值
     //   } */
     // ),
-    // baseLayer: new Cesium.ImageryLayer(
-    //   new Cesium.WebMapTileServiceImageryProvider({
-    //     url: 'http://t0.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=' + import.meta.env.VITE_TOKEN_TDT,
-    //     layer:'tiandituImg',
-    //     style:'default',
-    //     // format:'image/jpeg',
-    //     tileMatrixSetID:'tiandituImg',
-    //     // show:true,
-    //     // maximumLevel:18
-    //   })
-    // ),
     baseLayer: new Cesium.ImageryLayer(
+      new Cesium.WebMapTileServiceImageryProvider({
+        url: 'http://t{s}.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=' + import.meta.env.VITE_TOKEN_TDT,
+        layer:'tiandituImg',
+        style:'default',
+        // format:'image/jpeg',
+        tileMatrixSetID:'tiandituImg',
+        // show:true,
+        // maximumLevel:18
+        subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
+      })
+    ),
+    /* baseLayer: new Cesium.ImageryLayer(
       new Cesium.SingleTileImageryProvider({
         url: worldImage,
         tileWidth: 8176,
         tileHeight: 4032
       })
-    )
+    ) */
   })
   // 高德影像图
   /* const baseLayer = new UrlTemplateImageryProvider({
