@@ -13,6 +13,12 @@ const allMenu = [{
   desc: '在线瓦片图',
   tags: ['在线', '瓦片']
 }, {
+  title: '地形数据',
+  imgSrc: getAssetsFile('terrain-show.png'),
+  showRoute: '/terrain-show',
+  desc: '在线地形数据加载、本地地形数据加载',
+  tags: ['地形', '本地']
+}, {
   title: '雷达圆扫',
   imgSrc: getAssetsFile('rader-scan.png'),
   showRoute: '/rader-scan',

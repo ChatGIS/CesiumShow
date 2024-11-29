@@ -1,11 +1,3 @@
-<!--
- * @Author: ChatGIS ChatGIS@outlook.com
- * @Date: 2024-07-10 21:18:00
- * @LastEditors: ChatGIS ChatGIS@outlook.com
- * @LastEditTime: 2024-07-10 22:20:55
- * @FilePath: \CesiumShow\src\views\TerrainShow.vue
- * @Description: 地形数据加载展示
--->
 <script setup>
 import * as Cesium from 'cesium'
 import { onMounted } from 'vue'
@@ -13,12 +5,22 @@ import { onMounted } from 'vue'
 Cesium.Ion.defaultAccessToken=import.meta.env.VITE_TOKEN_CESIUM
 onMounted(async () => {
   const viewer = new Cesium.Viewer('cesiumContainer', {
-    terrainProvider: await Cesium.createWorldTerrainAsync()  // 在线数据加载
+    // terrainProvider: new Cesium.EllipsoidTerrainProvider({})
+    // terrainProvider: Cesium.Terrain.fromWorldTerrain(),
+    terrainProvider: await Cesium.createWorldTerrainAsync({
+      // requestWaterMask: true,
+      requestVertexNormals: true
+    })  // Cesium可用
     // terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('/terrain/')  // 本地数据加载
+    // terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('http://www.freexgis.com/web-data/terrain')
+    // terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('https://www.supermapol.com/realspace/services/3D-stk_terrain/rest/realspace/datas/info/data/path')
+    // terrainProvider: await Cesium.ArcGISTiledElevationTerrainProvider.fromUrl('https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer')
   })
+
+
   viewer.scene.debugShowFramesPerSecond = true
   // 本地地形数据范围
-  const entityPolylineTerrain = viewer.entities.add({
+  /* const entityPolylineTerrain = viewer.entities.add({
     id: 'polylineTerrain',
     name: '地形数据范围',
     show: true,
@@ -29,8 +31,26 @@ onMounted(async () => {
       material: Cesium.Color.BLUE,
       clampToGround: true,  // 贴地
     }
+  }) */
+  // viewer.zoomTo(entityPolylineTerrain)
+  // Huashan
+  viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(117.063045, 36.715607, 126),
+    orientation: {
+      heading: Cesium.Math.toRadians(359.68),
+      pitch: Cesium.Math.toRadians(-7.68),
+      roll: Cesium.Math.toRadians(0)
+    }
   })
-  viewer.zoomTo(entityPolylineTerrain)
+  // 泰山
+  /* viewer.camera.setView({
+    destination: Cesium.Cartesian3.fromDegrees(117.151952, 36.173695, 2539),
+    orientation: {
+      heading: Cesium.Math.toRadians(323.40),
+      pitch: Cesium.Math.toRadians(-15.72),
+      roll: Cesium.Math.toRadians(0)
+    }
+  }) */ 
 })
 
 </script>
