@@ -22,6 +22,21 @@ onMounted(async () => {
     //   } */
     // ),
     baseLayer: new Cesium.ImageryLayer(
+      new Cesium.UrlTemplateImageryProvider({
+        // url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png'
+        url: 'https://webst0{s}.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}',
+        subdomains: ['1', '2', '3', '4'],
+      })/* ,
+      {
+        brightness: 0.6, // 亮度
+        contrast: 1.8, // 对比度
+        hue: 1, // 色相
+        saturation: 0.0, // 饱和度
+        gamma: 0.3 // 伽马值
+      } */
+    ),
+    terrainProvider: await Cesium.CesiumTerrainProvider.fromUrl('http://www.supermapol.com/realspace/services/3D-stk_terrain/rest/realspace/datas/info/data/path')
+    /* baseLayer: new Cesium.ImageryLayer(
       new Cesium.WebMapTileServiceImageryProvider({
         url: 'http://t{s}.tianditu.gov.cn/vec_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX={TileMatrix}&TILEROW={TileRow}&TILECOL={TileCol}&tk=' + import.meta.env.VITE_TOKEN_TDT,
         layer:'tiandituImg',
@@ -32,7 +47,7 @@ onMounted(async () => {
         // maximumLevel:18
         subdomains: ['0', '1', '2', '3', '4', '5', '6', '7']
       })
-    ),
+    ), */
     /* baseLayer: new Cesium.ImageryLayer(
       new Cesium.SingleTileImageryProvider({
         url: worldImage,
