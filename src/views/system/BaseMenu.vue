@@ -66,6 +66,12 @@ const allMenu = [{
   showRoute: '/model-show',
   desc: '模型展示',
   tags: ['模型']
+}, {
+  title: '动态围栏',
+  imgSrc: getAssetsFile('rader-scan.png'),
+  showRoute: '/electric-fence',
+  desc: '动态围栏',
+  tags: ['围栏', '墙']
 }]
 
 // 计算属性，拆为二维数组
