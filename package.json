@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@turf/turf": "^7.1.0",
-    "cesium": "^1.123.0",
+    "cesium": "^1.124.0",
     "element-plus": "^2.6.2",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
